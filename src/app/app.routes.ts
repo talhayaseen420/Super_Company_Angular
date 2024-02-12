@@ -1,3 +1,23 @@
 import { Routes } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+    {
+        path:'',
+        redirectTo:'/login',
+        pathMatch:'full'
+      },
+      {
+        path:'login',
+        component:LoginComponent
+      },
+      {
+        path:'register',
+        component:SignUpComponent
+      },
+      {
+        path:'dashboard',
+        loadChildren: ()=>import('./dashboard/dashboard.module').then(m=>m.DashboardModule)
+      },
+];

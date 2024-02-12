@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "super-company",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}

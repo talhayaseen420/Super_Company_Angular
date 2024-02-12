@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "super-company-6e1d9": {
+      "hosting": {
+        "super-company": [
+          "super-company-6e1d9"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "super-company-6e1d9"
+  }
+}

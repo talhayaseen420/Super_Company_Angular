@@ -1,0 +1,174 @@
+<div class="home-main"></div>
+<div class="container-fluid">
+  <h1 class="heading">Widgets</h1>
+  <figure class="text-center">
+    <blockquote class="blockquote">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis, quae.
+      </p>
+    </blockquote>
+  </figure>
+
+  <div class="cards-content">
+    <div class="row">
+      <div class="col-md-6 mb-3 d-flex flex-column h-100">
+        <div class="cat-facts">
+
+            <div class="card" *ngIf="catFact; else notCat">
+              <div class="card-header">Cat Fact</div>
+              <div class="card-body d-flex flex-column">
+                <blockquote class="blockquote mb-2">
+                  <p>{{ catFact.fact }}</p>
+                </blockquote>
+                <div class="form-group mt-auto">
+                  <button
+                    type="button"
+                    (click)="update()"
+                    class="btn btn-info custom-buttom"
+                  >
+                    Refresh
+                  </button>
+                </div>
+              </div>
+            </div>
+            <ng-template #notCat>
+              not found.....
+            </ng-template>
+        </div>
+      </div>
+
+      <div class="col-md-6 mb-3 d-flex flex-column h-100">
+        <div class="sunrise">
+          <div class="card h-100">
+            <div class="card-header">Sunrise / Sunset Information</div>
+            <div class="card-body d-flex flex-column">
+              <form action="" [formGroup]="sunriseForm" (ngSubmit)="submit()">
+                <div class="input-group mb-3">
+                  <button
+                    class="btn btn-outline-secondary"
+                    type="button"
+                    id="latitude"
+                  >
+                    Latitude:
+                  </button>
+                  <input
+                    class="form-control"
+                    type="text"
+                    aria-describedby="latitude"
+                    formControlName="latitude"
+                  />
+                </div>
+
+                <small
+                  *ngIf="showError && sunriseForm.get('latitude')?.invalid"
+                  class="text-danger mb-2"
+                  >Latitude is required</small
+                >
+
+                <div class="input-group mb-3">
+                  <button
+                    class="btn btn-outline-secondary"
+                    type="button"
+                    id="longitude"
+                  >
+                    Longitude:
+                  </button>
+                  <input
+                    class="form-control"
+                    type="text"
+                    aria-describedby="longitude"
+                    formControlName="longitude"
+                  />
+                </div>
+
+                <small
+                  *ngIf="showError && sunriseForm.get('longitude')?.invalid"
+                  class="text-danger mb-2"
+                  >Longitude is required</small
+                >
+
+                <div class="input-group mb-3">
+                  <button
+                    class="btn btn-outline-secondary"
+                    type="button"
+                    id="date"
+                  >
+                    Date:
+                  </button>
+                  <input
+                    class="form-control"
+                    type="date"
+                    aria-describedby="date"
+                    formControlName="date"
+                  />
+                </div>
+
+                <small
+                  *ngIf="showError && sunriseForm.get('date')?.invalid"
+                  class="text-danger mb-2"
+                  >Date is required</small
+                >
+
+                <div class="form-group mt-auto">
+                  <button
+                    type="submit"
+                    class="btn btn-info custom-buttom align-self-end"
+                    (click)="getSunriseSunsetData()"
+                  >
+                    Get Sunrise Sunset Data
+                  </button>
+                </div>
+              </form>
+
+              <div *ngIf="sunriseSunsetData" class="mt-auto">
+                <h1 class="card-title">Sunrise Sunset Data:</h1>
+                <ul class="list-group">
+                  <li class="list-group-item">
+                    Sunrise: {{ sunriseSunsetData.sunrise }}
+                  </li>
+                  <li class="list-group-item">
+                    Sunset: {{ sunriseSunsetData.sunset }}
+                  </li>
+                  <li class="list-group-item">
+                    Solar Noon: {{ sunriseSunsetData.solar_noon }}
+                  </li>
+                  <li class="list-group-item">
+                    Day Length: {{ sunriseSunsetData.day_length }}
+                  </li>
+                  <li class="list-group-item">
+                    Civil Twilight Begin:
+                    {{ sunriseSunsetData.civil_twilight_begin }}
+                  </li>
+                  <li class="list-group-item">
+                    Civil Twilight End:
+                    {{ sunriseSunsetData.civil_twilight_end }}
+                  </li>
+                  <li class="list-group-item">
+                    Nautical Twilight Begin:
+                    {{ sunriseSunsetData.nautical_twilight_begin }}
+                  </li>
+                  <li class="list-group-item">
+                    Nautical Twilight End:
+                    {{ sunriseSunsetData.nautical_twilight_end }}
+                  </li>
+                  <li class="list-group-item">
+                    Astronomical Twilight Begin:
+                    {{ sunriseSunsetData.astronomical_twilight_begin }}
+                  </li>
+                  <li class="list-group-item">
+                    Astronomical Twilight End:
+                    {{ sunriseSunsetData.astronomical_twilight_end }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-alert>
+our content
+</app-alert>
